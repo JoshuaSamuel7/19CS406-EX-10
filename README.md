@@ -1,12 +1,12 @@
 # EX-10 APPLICATION USING TCP SOCKETS - FILE TRANSFER PROGRAM
 
-# DATE : 08/05/2023
+## DATE : 08/05/2023
 
-# AIM :
+## AIM :
 To write a python program for creating File Transfer using TCP Sockets Links.
 
 
-# ALGORITHM :
+## ALGORITHM :
 ```
 1. Start the program.
 2. Get the frame size from the user.
@@ -17,8 +17,8 @@ will sendNACK signal to client.
 6. Stop the program
 ```
 
-# PROGRAM :
-# CLIENT :
+## PROGRAM :
+## CLIENT :
 ```
 import socket
 s = socket.socket()
@@ -40,7 +40,7 @@ s.close()
 print('connection closed')
 ```
 
-# SERVER :
+## SERVER :
 ```
 import socket
 port = 60000
@@ -65,12 +65,12 @@ while True:
  conn.close()
 ```
 
-# OUTPUT :
-# CLIENT :
+## OUTPUT :
+## CLIENT :
 ![10A](https://github.com/JoshuaSamuel7/EX-10/assets/118343296/6068d73d-09d0-4c1b-bbfb-d64164757e33)
 
-# SERVER :
+## SERVER :
 ![10B](https://github.com/JoshuaSamuel7/EX-10/assets/118343296/e3cde2b0-c456-4270-852c-a7a2b3b9f04e)
-# RESULT :
+## RESULT :
 Thus, the python program for creating File Transfer using TCP Sockets Links was
 successfully created and executed.
