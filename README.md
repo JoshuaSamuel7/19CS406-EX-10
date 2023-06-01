@@ -1,9 +1,10 @@
-# EX-9 APPLICATION USING TCP SOCKETS - CREATING FOR CHAT CLIENT-SERVER
+# EX-10 APPLICATION USING TCP SOCKETS - FILE TRANSFER PROGRAM
 
-# DATE : 02/05/2023
+# DATE : 08/05/2023
 
 # AIM :
-To write a python program for creating Chat using TCP Sockets Links.
+To write a python program for creating File Transfer using TCP Sockets Links.
+
 
 # ALGORITHM :
 ```
@@ -20,26 +21,48 @@ will sendNACK signal to client.
 # CLIENT :
 ```
 import socket
-s=socket.socket()
-s.connect(('localhost',8000))
-while True:
- msg=input("Client > ")
- s.send(msg.encode())
- print("Server > ",s.recv(1024).decode())
+s = socket.socket()
+host = socket.gethostname()
+port = 60000
+s.connect((host, port))
+s.send("Hello server!".encode())
+with open('received_file', 'wb') as f:
+ while True:
+ print('receiving data...')
+ data = s.recv(1024)
+ print('data=%s', (data))
+ if not data:
+ break
+ f.write(data)
+f.close()
+print('Successfully get the file')
+s.close()
+print('connection closed')
 ```
 
 # SERVER :
 ```
 import socket
-s=socket.socket()
-s.bind(('localhost',8000))
+port = 60000
+s = socket.socket()
+host = socket.gethostname()
+s.bind((host, port))
 s.listen(5)
-c,addr=s.accept()
 while True:
- ClientMessage=c.recv(1024).decode()
- print("Client > ",ClientMessage)
- msg=input("Server > ")
- c.send(msg.encode())
+ conn, addr = s.accept()
+ data = conn.recv(1024)
+ print('Server received', repr(data))
+ filename='mytext.txt'
+ f = open(filename,'rb')
+ l = f.read(1024)
+ while (l):
+  conn.send(l)
+  print('Sent ',repr(l))
+  l = f.read(1024)
+ f.close()
+ print('Done sending')
+ conn.send('Thank you for connecting'.encode())
+ conn.close()
 ```
 
 # OUTPUT :
@@ -48,7 +71,6 @@ while True:
 
 # SERVER :
 ![10B](https://github.com/JoshuaSamuel7/EX-10/assets/118343296/e3cde2b0-c456-4270-852c-a7a2b3b9f04e)
-
 # RESULT :
-Thus, the python program for creating Chat using TCP Sockets Links was successfully
-created and executed.
+Thus, the python program for creating File Transfer using TCP Sockets Links was
+successfully created and executed.
