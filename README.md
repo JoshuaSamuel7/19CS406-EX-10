@@ -1,6 +1,6 @@
 # EX-10 APPLICATION USING TCP SOCKETS - FILE TRANSFER PROGRAM
 
-## DATE : 08/05/2023
+## DATE : 10/05/2023
 
 ## AIM :
 To write a python program for creating File Transfer using TCP Sockets Links.
@@ -19,7 +19,7 @@ will sendNACK signal to client.
 
 ## PROGRAM :
 ## CLIENT :
-```
+```PYTHON 3
 import socket
 s = socket.socket()
 host = socket.gethostname()
@@ -41,7 +41,7 @@ print('connection closed')
 ```
 
 ## SERVER :
-```
+```PYTHON 3
 import socket
 port = 60000
 s = socket.socket()
